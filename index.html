@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="基于select的日期选择">
+    <meta name="author" content="Thomas Lau">
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        body {
+            padding-top: 70px;
+            padding-bottom: 30px;
+        }
+
+        .theme-dropdown .dropdown-menu {
+            position: static;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .theme-showcase > p > .btn {
+            margin: 5px 0;
+        }
+
+        .theme-showcase .navbar .container {
+            width: auto;
+        }
+
+    </style>
+</head>
+<body role="document">
+
+
+    <div class="container theme-showcase" role="main">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1>Datetime Select</h1>
+            <p>基于select的日期选择</p>
+        </div>
+
+
+        <div class="page-header">
+            <h1>引用</h1>
+        </div>
+        <div class="highlight">
+            <pre><code class="language-html" data-lang="html">&lt;!-- DatetimeSelect 核心 CSS 文件 --&gt;<br>&lt;link rel="stylesheet" href="css/main.css"&gt;<br><br>&lt;!-- jQuery文件。务必在datetime_select.min.js 之前引入 --&gt;<br>&lt;script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"&gt;&lt;/script&gt;<br><br>&lt;!-- 最新的 DatetimeSelect 核心 JavaScript 文件 --&gt;<br>&lt;script src="js/datetime_select.min.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+
+
+
+        <div class="page-header">
+            <h1>选择日期和时间</h1>
+        </div>
+        <p>使用<code>data-toggle="datetimeSelect"</code>来注册控件</p>
+        <div class="highlight">
+            <pre><code class="language-html" data-lang="html">&lt;input type="text" data-toggle="datetimeSelect"&gt;</code></pre>
+        </div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">日期和时间</label>
+                <div class="col-sm-10">
+                    <input type="text" data-toggle="datetimeSelect" autocomplete="off">
+                </div>
+            </div>
+        </form>
+
+        <div class="page-header">
+            <h1>只选择日期</h1>
+        </div>
+        <p>使用<code>data-toggle="dateSelect"</code>来注册控件</p>
+        <div class="highlight">
+            <pre><code class="language-html" data-lang="html">&lt;input type="text" data-toggle="dateSelect"&gt;</code></pre>
+        </div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">日期</label>
+                <div class="col-sm-10">
+                    <input type="text" data-toggle="dateSelect" autocomplete="off">
+                </div>
+            </div>
+        </form>
+
+        <div class="page-header">
+            <h1>只选择时间</h1>
+        </div>
+        <p>使用<code>data-toggle="timeSelect"</code>来注册控件</p>
+        <div class="highlight">
+            <pre><code class="language-html" data-lang="html">&lt;input type="text" data-toggle="timeSelect"&gt;</code></pre>
+        </div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">时间</label>
+                <div class="col-sm-10">
+                    <input type="text" data-toggle="timeSelect" autocomplete="off">
+                </div>
+            </div>
+        </form>
+
+
+        <div class="page-header">
+            <h1>调整最大和最小年份</h1>
+        </div>
+        <p>年份选择默认 <strong>最大值</strong> 为当前年的 <strong>+ 3</strong> , <strong>最小值</strong> 为当前年的 <strong>- 3</strong> ，需要修改时可使用 <code>data-maxyear</code> 和 <code>data-minyear</code>来修改</p>
+        <div class="highlight">
+            <pre><code class="language-html" data-lang="html">&lt;input type="text" data-maxyear="2035" data-minyear="1979" data-toggle="datetimeSelect"&gt;</code></pre>
+        </div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">日期和时间</label>
+                <div class="col-sm-10">
+                    <input type="text" data-toggle="datetimeSelect" data-maxyear="2035" data-minyear="1979" autocomplete="off">
+                </div>
+            </div>
+        </form>
+
+        <div class="page-header">
+            <h1>默认当前时间</h1>
+        </div>
+        <p>可使用 <code>data-current</code> 让控件初始化时为当前时间</p>
+        <div class="highlight">
+            <pre><code class="language-html" data-lang="html">&lt;input type="text" data-current="true" data-toggle="datetimeSelect"&gt;</code></pre>
+        </div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">日期和时间</label>
+                <div class="col-sm-10">
+                    <input type="text" data-toggle="datetimeSelect" data-current="true" autocomplete="off">
+                </div>
+            </div>
+        </form>
+
+        <div class="page-header">
+            <h1>本来有值</h1>
+        </div>
+        <p>可使用 <code>value</code> 让控件初始化时为该时间</p>
+        <div class="highlight">
+            <pre><code class="language-html" data-lang="html">&lt;input type="text" value="2013/02/28 11:31" data-toggle="datetimeSelect"&gt;</code></pre>
+        </div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">日期和时间</label>
+                <div class="col-sm-10">
+                    <input type="text" value="2013/02/28 11:31" data-toggle="datetimeSelect" autocomplete="off">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">日期</label>
+                <div class="col-sm-10">
+                    <input type="text" value="2013/02/28 11:31" data-toggle="dateSelect" autocomplete="off">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">时间</label>
+                <div class="col-sm-10">
+                    <input type="text" value="2013/02/28 11:31" data-toggle="timeSelect" autocomplete="off">
+                </div>
+            </div>
+        </form>
+
+        <div class="page-header">
+            <h1>必填</h1>
+        </div>
+        <p>可使用 <code>data-required</code> 让控件必填</p>
+        <div class="highlight">
+            <pre><code class="language-html" data-lang="html">&lt;input type="text" data-required="true" data-toggle="datetimeSelect"&gt;</code></pre>
+        </div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">日期和时间</label>
+                <div class="col-sm-10">
+                    <input type="text" data-toggle="datetimeSelect" data-required="true" autocomplete="off">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">提交</button>
+        </form>
+
+
+
+
+    </div>
+
+
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/datetime_select.js"></script>
+
+</body>
+</html>
