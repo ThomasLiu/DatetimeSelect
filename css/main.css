@@ -1,4 +1,5 @@
 .datetime-select {
+    background: none;
     background-color: #fff;
     background-image: none;
     border: 1px solid #ccc;
@@ -14,19 +15,19 @@
     width: 100%;
 }
 .datetime-select.datetime-select-year {
-    width: 58px;
+    width: 65px;
 }
 .datetime-select.datetime-select-month {
-    width: 43px;
+    width: 50px;
 }
 .datetime-select.datetime-select-day {
-    width: 43px;
+    width: 50px;
 }
 .datetime-select.datetime-select-hour {
-    width: 43px;
+    width: 50px;
 }
 .datetime-select.datetime-select-minute {
-    width: 43px;
+    width: 50px;
 }
 
 .has-error .datetime-select {

@@ -1,0 +1,29 @@
+{
+  "name": "DatetimeSelect",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ThomasLiu/DatetimeSelect",
+  "authors": [
+    "ThomasLiu <thomas_0836@qq.com>"
+  ],
+  "description": "基于select的日期选择控件",
+  "main": "datetime_select.js",
+  "moduleType": [],
+  "keywords": [
+    "date",
+    "select",
+    "日期选择",
+    "控件"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
