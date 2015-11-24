@@ -76,7 +76,7 @@
 
             for(var k in o) {
                 if(new RegExp("("+ k +")").test(format)) {
-                    format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+                    format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
                 }
             }
             return format;
@@ -150,14 +150,13 @@
             that['$' + dateModel].attr('required','required')
         }
         if(!that.options.current){
-            var $option = $('<option value="-1">' + DatetimeSelect.OPTIONTEXT[dateModel] + '</option>')
-            that['$' + dateModel].append($option)
+            var $tipsOption = $('<option value="-1">' + DatetimeSelect.OPTIONTEXT[dateModel] + '</option>')
+            that['$' + dateModel].append($tipsOption)
         }
         for(var i = options.start; i > options.end; i-- ){
             var $option = $('<option value="' + i + '">' + i + '</option>')
 
-            if((that.valueDate && i === options.inputValue)
-                || (oldValue && i === oldValue)){
+            if((that.valueDate && i === options.inputValue) || (oldValue && i === oldValue)){
                 $option.attr('selected','selected')
                 that[dateModel] = i;
             }
@@ -279,7 +278,7 @@
     }
 
     DatetimeSelect.isLeapYear = function(year){
-        return (year % 4 == 0 || (year % 100 == 0 && year % 400 == 0))
+        return (year % 4 === 0 || (year % 100 === 0 && year % 400 === 0))
     }
 
     DatetimeSelect.prototype.updateInputVlaue = function () {
@@ -287,16 +286,22 @@
         var type = that.type
         if(!that.hour && (type === 'datetimeSelect' || type === 'timeSelect')){
             that.minute = null
-            if(that.$minute) that.$minute.remove()
+            if(that.$minute) {
+                that.$minute.remove()
+            }
         }
 
         if(!that.month && (type === 'datetimeSelect' || type === 'dateSelect')){
             that.day = null
-            if(that.$day) that.$day.remove()
+            if(that.$day) {
+                that.$day.remove()
+            }
         }
         if(!that.year && (type === 'datetimeSelect' || type === 'dateSelect')){
             that.month = null
-            if(that.$month) that.$month.remove()
+            if(that.$month) {
+                that.$month.remove()
+            }
         }
 
         if(type === 'datetimeSelect' && that.year && that.month && that.day && that.minute && that.hour){
@@ -314,11 +319,21 @@
     DatetimeSelect.prototype.destroy = function () {
         var that = this
         var type = that.options.type
-        if(that.$year) that.$year.remove()
-        if(that.$month) that.$month.remove()
-        if(that.$day) that.$day.remove()
-        if(that.$hour) that.$hour.remove()
-        if(that.$minute) that.$minute.remove()
+        if(that.$year) {
+            that.$year.remove()
+        }
+        if(that.$month) {
+            that.$month.remove()
+        }
+        if(that.$day) {
+            that.$day.remove()
+        }
+        if(that.$hour) {
+            that.$hour.remove()
+        }
+        if(that.$minute) {
+            that.$minute.remove()
+        }
         that.$element.off('.' + type).removeData('ls.' + type)
     }
 
@@ -330,11 +345,17 @@
         return this.each(function () {
             var $this   = $(this)
             var data    = $this.data('ls.datetimeSelect')
-            var options = typeof option == 'object' && option
+            var options = typeof option === 'object' && option
 
-            if (!data && /destroy|hide/.test(option)) return
-            if (!data) $this.data('ls.datetimeSelect', (data = new DatetimeSelect(this, options)))
-            if (typeof option == 'string') data[option]()
+            if (!data && /destroy|hide/.test(option)) {
+                return
+            }
+            if (!data) {
+                $this.data('ls.datetimeSelect', (data = new DatetimeSelect(this, options)))
+            }
+            if (typeof option === 'string') {
+                data[option]()
+            }
         })
     }
 
