@@ -26,6 +26,7 @@
         this.$minute = null
 
         this.init(element, options)
+
     }
 
     DatetimeSelect.VERSION = '0.0.1'
@@ -98,6 +99,31 @@
             this.$element.val(DatetimeSelect.format(new Date(),'yyyy/MM/dd hh:mm'))
         }
 
+        this.buildSelect()
+
+        this.$element.closest('form').on('submit',function(){
+            var $thisForm = $(this)
+            var canSubmit = true
+            $('.datetime-select',$thisForm).each(function(){
+                var $thisSelect = $(this)
+                if($thisSelect.val() === '-1'){
+                    canSubmit = false
+                    $thisSelect.closest('.form-group').removeClass('has-error').addClass('has-error')
+                }
+            })
+            if(!canSubmit){
+                return false
+            }
+        }).on('reset',function(){
+            var $thisForm = $(this)
+            $('[data-toggle="datetimeSelect"],[data-toggle="timeSelect"],[data-toggle="dateSelect"]',$thisForm).each(function(){
+                var $thisInput = $(this)
+                $thisInput.data('ls.datetimeSelect').cleanValue()
+            })
+        });
+    }
+
+    DatetimeSelect.prototype.buildSelect = function () {
         var value = this.$element.attr('value') || this.$element.val()
         if(value){
             this.valueDate = new Date(value)
@@ -106,6 +132,13 @@
             this.day = this.valueDate.getDate()
             this.hour = this.valueDate.getHours()
             this.minute = this.valueDate.getMinutes()
+        }else {
+            this.valueDate = null
+            this.year = null
+            this.month = null
+            this.day = null
+            this.hour = null
+            this.minute = null
         }
         if(this.type === 'timeSelect'){
             this.initHour()
@@ -123,22 +156,6 @@
                 }
             }
         }
-
-        this.$element.closest('form').on('submit',function(){
-            var $thisForm = $(this)
-            var canSubmit = true
-            $('.datetime-select',$thisForm).each(function(){
-                var $thisSelect = $(this)
-                if($thisSelect.val() === '-1'){
-                    canSubmit = false
-                    $thisSelect.closest('.form-group').removeClass('has-error').addClass('has-error')
-                }
-            })
-            if(!canSubmit){
-                return false
-            }
-        });
-
     }
 
     DatetimeSelect.prototype.getDefaults = function () {
@@ -163,10 +180,10 @@
         if(that.options.required){
             that['$' + dateModel].attr('required','required')
         }
-        if(!that.options.current){
-            var $tipsOption = $('<option value="-1">' + DatetimeSelect.OPTIONTEXT[dateModel] + '</option>')
-            that['$' + dateModel].append($tipsOption)
-        }
+
+        var $tipsOption = $('<option value="-1">' + DatetimeSelect.OPTIONTEXT[dateModel] + '</option>')
+        that['$' + dateModel].append($tipsOption)
+
         for(var i = options.start; i > options.end; i-- ){
             var $option = $('<option value="' + i + '">' + i + '</option>')
 
@@ -329,6 +346,27 @@
         }
     }
 
+    DatetimeSelect.prototype.cleanValue = function () {
+        var that = this
+        that.$element.attr('value','')
+        that.$element.val('')
+        if(that.$year) {
+            that.$year.remove()
+        }
+        if(that.$month) {
+            that.$month.remove()
+        }
+        if(that.$day) {
+            that.$day.remove()
+        }
+        if(that.$hour) {
+            that.$hour.remove()
+        }
+        if(that.$minute) {
+            that.$minute.remove()
+        }
+        that.buildSelect()
+    }
 
     DatetimeSelect.prototype.destroy = function () {
         var that = this
