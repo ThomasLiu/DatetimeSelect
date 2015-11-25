@@ -124,6 +124,20 @@
             }
         }
 
+        this.$element.closest('form').on('submit',function(){
+            var $thisForm = $(this)
+            var canSubmit = true
+            $('.datetime-select',$thisForm).each(function(){
+                var $thisSelect = $(this)
+                if($thisSelect.val() === '-1'){
+                    canSubmit = false
+                    $thisSelect.closest('.form-group').removeClass('has-error').addClass('has-error')
+                }
+            })
+            if(!canSubmit){
+                return false
+            }
+        });
 
     }
 
@@ -378,21 +392,6 @@
         $('[data-toggle="datetimeSelect"],[data-toggle="timeSelect"],[data-toggle="dateSelect"]').each(function () {
             var $this = $(this)
             Plugin.call($this, $this.data())
-            $this.closest('form').on('submit',function(){
-                var $thisForm = $(this)
-                var canSubmit = true
-                $('.datetime-select',$thisForm).each(function(){
-                   var $thisSelect = $(this)
-                   if($thisSelect.val() === '-1'){
-                       canSubmit = false
-                       $thisSelect.closest('.form-group').removeClass('has-error').addClass('has-error')
-                   }
-                })
-                if(!canSubmit){
-                    return false
-                }
-            });
-
         })
     })
 
