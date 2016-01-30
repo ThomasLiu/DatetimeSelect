@@ -197,7 +197,7 @@
         that['$' + dateModel].on('change',function(){
             var $this = $(this),
                 val = $this.val()
-            if(val > 0){
+            if(val >= 0){
                 that[dateModel] = val
             }else {
                 that[dateModel] = null
