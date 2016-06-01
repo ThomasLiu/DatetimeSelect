@@ -184,7 +184,19 @@
         var $tipsOption = $('<option value="-1">' + DatetimeSelect.OPTIONTEXT[dateModel] + '</option>')
         that['$' + dateModel].append($tipsOption)
 
-        for(var i = options.start; i > options.end; i-- ){
+        var start = parseInt(options.start)
+        var end = parseInt(options.end)
+        var val = parseInt(options.inputValue)
+        console.log('1st',start,end, val, oldValue);
+        if(val > start){
+            start = val
+        }
+        if(val <= end){
+            end = val - 1
+        }
+        console.log('2nd',start,end, options.inputValue, oldValue);
+
+        for(var i = start; i > end; i-- ){
             var $option = $('<option value="' + i + '">' + i + '</option>')
 
             if((that.valueDate && i === options.inputValue) || (oldValue && i === oldValue)){
@@ -335,7 +347,7 @@
             }
         }
 
-        if(type === 'datetimeSelect' && that.year && that.month && that.day && that.minute && that.hour){
+        if(type === 'datetimeSelect' && that.year > 0 && that.month > 0 && that.day > 0 && that.minute >= 0 && that.hour >= 0){
             that.$element.val(that.year + '/' + DatetimeSelect.getNumStr(that.month) + '/' + DatetimeSelect.getNumStr(that.day) + ' ' + DatetimeSelect.getNumStr(that.hour) + ':' + DatetimeSelect.getNumStr(that.minute))
         }else if(type === 'dateSelect' && that.year && that.month && that.day){
             that.$element.val(that.year + '/' + DatetimeSelect.getNumStr(that.month) + '/' + DatetimeSelect.getNumStr(that.day))

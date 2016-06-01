@@ -1,6 +1,6 @@
 {
   "name": "datetime_select",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "datetime select",
   "main": "gulpfile.js",
   "repository": {
