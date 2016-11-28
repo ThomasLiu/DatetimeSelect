@@ -2,3 +2,4 @@
 js/lib
 node_modules
 .idea
+.log
