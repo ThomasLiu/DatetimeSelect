@@ -6,7 +6,7 @@
     "ThomasLiu <thomas_0836@qq.com>"
   ],
   "description": "基于select的日期选择控件",
-  "main": "datetime_select.js",
+  "main": "./js/datetime_select.js",
   "moduleType": [],
   "keywords": [
     "date",
