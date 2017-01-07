@@ -104,7 +104,7 @@
         this.$element.closest('form').on('submit',function(){
             var $thisForm = $(this)
             var canSubmit = true
-            $('.datetime-select',$thisForm).each(function(){
+            $('.datetime-select[required]',$thisForm).each(function(){
                 var $thisSelect = $(this)
                 if($thisSelect.val() === '-1'){
                     canSubmit = false
