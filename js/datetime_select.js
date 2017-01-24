@@ -191,7 +191,7 @@
         if(val > start){
             start = val
         }
-        if(val <= end){
+        if(val > 0 && val <= end){
             end = val - 1
         }
         console.log('2nd',start,end, options.inputValue, oldValue);
