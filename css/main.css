@@ -20,14 +20,26 @@
 .datetime-select.datetime-select-month {
     width: 50px;
 }
+.datetime-select.datetime-select-month.en {
+    width: 68px;
+}
 .datetime-select.datetime-select-day {
     width: 50px;
+}
+.datetime-select.datetime-select-day.en {
+    width: 52px;
 }
 .datetime-select.datetime-select-hour {
     width: 50px;
 }
+.datetime-select.datetime-select-hour.en {
+    width: 58px;
+}
 .datetime-select.datetime-select-minute {
     width: 50px;
+}
+.datetime-select.datetime-select-minute.en {
+    width: 70px;
 }
 
 .has-error .datetime-select {

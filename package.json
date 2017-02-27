@@ -1,6 +1,6 @@
 {
   "name": "datetime_select",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "datetime select",
   "main": "./js/datetime_select.min.js",
   "repository": {

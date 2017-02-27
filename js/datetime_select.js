@@ -47,6 +47,14 @@
         minute : '分'
     }
 
+    DatetimeSelect.EN_OPTIONTEXT = {
+        year : 'Year',
+        month : 'Month',
+        day : 'Day',
+        hour : 'Hour',
+        minute : 'Minute'
+    }
+
     DatetimeSelect.getMonthDays = function(year,month){
         var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
         if(DatetimeSelect.isLeapYear(year)){
@@ -91,6 +99,13 @@
         this.$element  = $(element)
         this.type      = this.$element.data('toggle')
         this.options   = this.getOptions(options)
+        this.language  = 'OPTIONTEXT'
+        
+        var isEn = this.$element.data('en')
+
+        if (isEn) {
+            this.language = 'EN_OPTIONTEXT'
+        }
 
         if (this.$element[0] instanceof document.constructor && !this.options.selector) {
             throw new Error('`selector` option must be specified when initializing ' + this.type + ' on the window.document object!')
@@ -177,11 +192,16 @@
         }
         that['$' + dateModel] = $('<select>')
         that['$' + dateModel].addClass('datetime-select').addClass('datetime-select-' + dateModel)
+
+        if(that.language === 'EN_OPTIONTEXT') {
+            that['$' + dateModel].addClass('en')
+        }
+
         if(that.options.required){
             that['$' + dateModel].attr('required','required')
         }
 
-        var $tipsOption = $('<option value="-1">' + DatetimeSelect.OPTIONTEXT[dateModel] + '</option>')
+        var $tipsOption = $('<option value="-1">' + DatetimeSelect[that.language][dateModel] + '</option>')
         that['$' + dateModel].append($tipsOption)
 
         var start = parseInt(options.start)
